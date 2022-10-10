@@ -8479,11 +8479,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Santiago\\source\\repos\\UniversidadSophosApi\\UniversidadSophosApi\\UniversidadSophosApi.csproj",
+      "projectUniqueName": "C:\\Users\\Santiago\\Documents\\GitHub\\SistemaUniversidad\\UniversidadSophosApi\\UniversidadSophosApi\\UniversidadSophosApi.csproj",
       "projectName": "UniversidadSophosApi",
-      "projectPath": "C:\\Users\\Santiago\\source\\repos\\UniversidadSophosApi\\UniversidadSophosApi\\UniversidadSophosApi.csproj",
+      "projectPath": "C:\\Users\\Santiago\\Documents\\GitHub\\SistemaUniversidad\\UniversidadSophosApi\\UniversidadSophosApi\\UniversidadSophosApi.csproj",
       "packagesPath": "C:\\Users\\Santiago\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Santiago\\source\\repos\\UniversidadSophosApi\\UniversidadSophosApi\\obj\\",
+      "outputPath": "C:\\Users\\Santiago\\Documents\\GitHub\\SistemaUniversidad\\UniversidadSophosApi\\UniversidadSophosApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Santiago\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jrM4BKH6aPWCeNl+BWgg/57ELtyUayf5qJeBXBF5n8O/KNolT7VoRYh3BDxG7ouzVPElD3DUwHyaLSO0xtlUXA==",
+  "dgSpecHash": "TWFw8sVntkpkkl89bsCfbZfYPVwn96UGPe/p79R4XW6M8v5RKfqOAKiGHMhjvc7iTDmWbpHVwrqeC72ZFkd/Vg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Santiago\\source\\repos\\UniversidadSophosApi\\UniversidadSophosApi\\UniversidadSophosApi.csproj",
+  "projectFilePath": "C:\\Users\\Santiago\\Documents\\GitHub\\SistemaUniversidad\\UniversidadSophosApi\\UniversidadSophosApi\\UniversidadSophosApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Santiago\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Santiago\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
