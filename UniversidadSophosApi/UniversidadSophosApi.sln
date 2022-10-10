@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32802.440
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversidadSophosApi", "UniversidadSophosApi\UniversidadSophosApi.csproj", "{CE151311-60EB-49A2-8588-11D73D96219C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE151311-60EB-49A2-8588-11D73D96219C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE151311-60EB-49A2-8588-11D73D96219C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE151311-60EB-49A2-8588-11D73D96219C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE151311-60EB-49A2-8588-11D73D96219C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {19011D7B-F83D-46DF-AA10-042DF9EDC951}
+	EndGlobalSection
+EndGlobal
