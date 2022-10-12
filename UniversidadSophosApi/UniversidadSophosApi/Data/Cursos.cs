@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace UniversidadSophosApi.Models
+namespace UniversidadSophosApi.Data
 {
     public partial class Cursos
     {
@@ -33,7 +33,7 @@ namespace UniversidadSophosApi.Models
         [Column("cupos")]
         public int Cupos { get; set; }
         [Column("estado")]
-        public bool Estado { get; set; }
+        public int Estado { get; set; }
 
         [ForeignKey(nameof(IdCursoPrerrequisito))]
         [InverseProperty(nameof(Cursos.InverseIdCursoPrerrequisitoNavigation))]

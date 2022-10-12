@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace UniversidadSophosApi.Models
+namespace UniversidadSophosApi.Data
 {
     public partial class Docentes
     {
@@ -21,14 +21,10 @@ namespace UniversidadSophosApi.Models
         [Key]
         [Column("id_docente")]
         public int IdDocente { get; set; }
-        [Column("id_titulo")]
-        public int IdTitulo { get; set; }
         [Column("id_documento")]
         public int IdDocumento { get; set; }
-        [Required]
         [Column("num_documento")]
-        [StringLength(50)]
-        public string NumDocumento { get; set; }
+        public int NumDocumento { get; set; }
         [Required]
         [Column("nombre_docente")]
         [StringLength(50)]
@@ -36,14 +32,11 @@ namespace UniversidadSophosApi.Models
         [Column("fecha_nacimiento", TypeName = "date")]
         public DateTime FechaNacimiento { get; set; }
         [Column("estado")]
-        public bool Estado { get; set; }
+        public int Estado { get; set; }
 
         [ForeignKey(nameof(IdDocumento))]
         [InverseProperty(nameof(Documento.Docentes))]
         public virtual Documento IdDocumentoNavigation { get; set; }
-        [ForeignKey(nameof(IdTitulo))]
-        [InverseProperty("Docentes")]
-        public virtual TitulosAcademicos IdTituloNavigation { get; set; }
         [InverseProperty("IdDocenteNavigation")]
         public virtual ICollection<CursosDocentes> CursosDocentes { get; set; }
         [InverseProperty("IdDocenteNavigation")]

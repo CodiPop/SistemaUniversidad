@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace UniversidadSophosApi.Models
+namespace UniversidadSophosApi.Data
 {
     [Table("alumnos_facultades")]
     public partial class AlumnosFacultades
@@ -24,7 +24,7 @@ namespace UniversidadSophosApi.Models
         [Column("fecha_fin", TypeName = "date")]
         public DateTime FechaFin { get; set; }
         [Column("estado")]
-        public bool Estado { get; set; }
+        public int Estado { get; set; }
 
         [ForeignKey(nameof(IdAlumno))]
         [InverseProperty(nameof(Alumnos.AlumnosFacultades))]

@@ -7,28 +7,24 @@ using System.ComponentModel.DataAnnotations.Schema;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace UniversidadSophosApi.Models
+namespace UniversidadSophosApi.Data
 {
-    [Table("Experiencia_docencia")]
-    public partial class ExperienciaDocencia
+    [Table("Titulos_academicos")]
+    public partial class TitulosAcademicos
     {
         [Key]
-        [Column("id_experiencia_docencia")]
-        public int IdExperienciaDocencia { get; set; }
-        [Column("id_docente")]
-        public int IdDocente { get; set; }
+        [Column("id_titulo_academico")]
+        public int IdTituloAcademico { get; set; }
         [Column("id_nivel_academico")]
         public int IdNivelAcademico { get; set; }
-        [Column("fecha_inicio", TypeName = "date")]
-        public DateTime FechaInicio { get; set; }
-        [Column("fecha_fin", TypeName = "date")]
-        public DateTime FechaFin { get; set; }
+        [Column("id_docente")]
+        public int IdDocente { get; set; }
 
         [ForeignKey(nameof(IdDocente))]
-        [InverseProperty(nameof(Docentes.ExperienciaDocencia))]
+        [InverseProperty(nameof(Docentes.TitulosAcademicos))]
         public virtual Docentes IdDocenteNavigation { get; set; }
         [ForeignKey(nameof(IdNivelAcademico))]
-        [InverseProperty(nameof(NivelAcademico.ExperienciaDocencia))]
+        [InverseProperty(nameof(NivelAcademico.TitulosAcademicos))]
         public virtual NivelAcademico IdNivelAcademicoNavigation { get; set; }
     }
 }

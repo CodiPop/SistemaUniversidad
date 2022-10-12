@@ -7,14 +7,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace UniversidadSophosApi.Models
+namespace UniversidadSophosApi.Data
 {
     [Table("Nivel_academico")]
     public partial class NivelAcademico
     {
         public NivelAcademico()
         {
-            ExperienciaDocencia = new HashSet<ExperienciaDocencia>();
             TitulosAcademicos = new HashSet<TitulosAcademicos>();
         }
 
@@ -26,8 +25,6 @@ namespace UniversidadSophosApi.Models
         [StringLength(50)]
         public string NombreNivelAcademico { get; set; }
 
-        [InverseProperty("IdNivelAcademicoNavigation")]
-        public virtual ICollection<ExperienciaDocencia> ExperienciaDocencia { get; set; }
         [InverseProperty("IdNivelAcademicoNavigation")]
         public virtual ICollection<TitulosAcademicos> TitulosAcademicos { get; set; }
     }
