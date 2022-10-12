@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using UniversidadSophosApi.Data;
 using UniversidadSophosApi.DBContext;
-using UniversidadSophosApi.Models;
 
 namespace UniversidadSophosApi.Controllers
 {
@@ -14,9 +14,9 @@ namespace UniversidadSophosApi.Controllers
     [ApiController]
     public class AlumnosController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly AppDBContext _context;
 
-        public AlumnosController(AppDbContext context)
+        public AlumnosController(AppDBContext context)
         {
             _context = context;
         }

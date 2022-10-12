@@ -28,7 +28,7 @@ namespace UniversidadSophosApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<AppDbContext>(option =>
+            services.AddDbContext<AppDBContext>(option =>
                     option.UseSqlServer(Configuration.GetConnectionString("CadenaConexion")));
         }
 

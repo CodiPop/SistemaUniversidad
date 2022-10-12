@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using UniversidadSophosApi.Models;
+using UniversidadSophosApi.Data;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
@@ -9,13 +9,13 @@ using UniversidadSophosApi.Models;
 
 namespace UniversidadSophosApi.DBContext
 {
-    public partial class AppDbContext : DbContext
+    public partial class AppDBContext : DbContext
     {
-        public AppDbContext()
+        public AppDBContext()
         {
         }
 
-        public AppDbContext(DbContextOptions<AppDbContext> options)
+        public AppDBContext(DbContextOptions<AppDBContext> options)
             : base(options)
         {
         }
@@ -37,7 +37,7 @@ namespace UniversidadSophosApi.DBContext
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-TP2BN5N\\SQLEXPRESS;Initial Catalog=UniversidadSophos;Integrated Security=True");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-TP2BN5N\\SQLEXPRESS;Initial Catalog=UniversidadSophos;Integrated Security=True");
             }
         }
 
@@ -103,12 +103,6 @@ namespace UniversidadSophosApi.DBContext
                     .HasForeignKey(d => d.IdDocumento)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Docentes_Documento");
-
-                entity.HasOne(d => d.IdTituloNavigation)
-                    .WithMany(p => p.Docentes)
-                    .HasForeignKey(d => d.IdTitulo)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Docentes_Titulos_academicos");
             });
 
             modelBuilder.Entity<ExperienciaDocencia>(entity =>
@@ -118,12 +112,6 @@ namespace UniversidadSophosApi.DBContext
                     .HasForeignKey(d => d.IdDocente)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Experiencia_docencia_Docentes");
-
-                entity.HasOne(d => d.IdNivelAcademicoNavigation)
-                    .WithMany(p => p.ExperienciaDocencia)
-                    .HasForeignKey(d => d.IdNivelAcademico)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Experiencia_docencia_Nivel_academico");
             });
 
             modelBuilder.Entity<InscripcionesCurso>(entity =>
