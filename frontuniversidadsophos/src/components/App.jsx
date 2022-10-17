@@ -1,5 +1,7 @@
 import React from 'react'
 import Layout from '../layout/Layout';
+import Home from '../pages/Home';
+import Edit from '../pages/Edit';
 import {BrowserRouter as Router, Route,Routes} from "react-router-dom"
 
 const App = () => {
@@ -10,14 +12,15 @@ const App = () => {
       <React.Fragment>
       <Router>
         <Layout>
-     {/*      <Routes>
+          <Routes>
             <Route exact path="/" element={<Home/>}/>
-            <Route exact path="/Form" element={<Form/>}/>
+            <Route exact path='/Edit/' element={<Edit/>}/>
+{/*             <Route exact path="/Form" element={<Form/>}/>
             <Route exact path="/Lista" element={<Lista/>}/>
             <Route exact path="/User/:id" element={<User/>}/>
-            <Route exact path="/Edit/:id" element={<Edit/>}/>
+             */}
             
-          </Routes> */}
+          </Routes> 
         </Layout>
       </Router>
       

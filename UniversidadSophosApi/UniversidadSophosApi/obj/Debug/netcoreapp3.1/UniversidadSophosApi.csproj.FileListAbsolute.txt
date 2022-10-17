@@ -262,3 +262,6 @@ C:\Users\Santiago\Documents\GitHub\SistemaUniversidad\UniversidadSophosApi\Unive
 C:\Users\Santiago\Documents\GitHub\SistemaUniversidad\UniversidadSophosApi\UniversidadSophosApi\obj\Debug\netcoreapp3.1\UniversidadSophosApi.pdb
 C:\Users\Santiago\Documents\GitHub\SistemaUniversidad\UniversidadSophosApi\UniversidadSophosApi\obj\Debug\netcoreapp3.1\UniversidadSophosApi.genruntimeconfig.cache
 C:\Users\Santiago\Documents\GitHub\SistemaUniversidad\UniversidadSophosApi\UniversidadSophosApi\obj\Debug\netcoreapp3.1\UniversidadSophosApi.csproj.AssemblyReference.cache
+C:\Users\Santiago\Documents\GitHub\SistemaUniversidad\UniversidadSophosApi\UniversidadSophosApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Santiago\Documents\GitHub\SistemaUniversidad\UniversidadSophosApi\UniversidadSophosApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\Santiago\Documents\GitHub\SistemaUniversidad\UniversidadSophosApi\UniversidadSophosApi\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
