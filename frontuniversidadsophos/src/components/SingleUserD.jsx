@@ -30,8 +30,8 @@ const useStyle = makeStyles({
   }
 });
 
-export const SingleUser = ({ nombreCurso, idCursoPrerrequisito
-  , numCreditos, cupos, idCurso,idCursoPrerrequisitoNavigation}) => {
+export const SingleUserD = ({ nombreDocente, facultad
+  , numDocumento, fechaNacimiento, nombreNivelAcademico,idCursoPrerrequisitoNavigation}) => {
 
   const classes = useStyle();
 
@@ -40,19 +40,19 @@ export const SingleUser = ({ nombreCurso, idCursoPrerrequisito
     <CardContent className={classes.carContent}>
       <Typography variant="body1">
         <strong>Nombre: </strong>
-        {nombreCurso}
+        {nombreDocente}
       </Typography>
       <Typography variant="body1">
-        <strong>Prerrequisito: </strong>
-        {idCursoPrerrequisitoNavigation?.nombreCurso}
+        <strong>Nivel Academico: </strong>
+        {nombreNivelAcademico}
       </Typography>
       <Typography variant="body1">
-        <strong>Numero de creditos: </strong>
-        {numCreditos}
+        <strong>Numero de documento: </strong>
+        {numDocumento}
       </Typography>
       <Typography variant="body1">
-        <strong>Cupos: </strong>
-        {cupos}
+        <strong>Fecha de Nacimiento: </strong>
+        {fechaNacimiento}
       </Typography>
     </CardContent>
 
@@ -62,4 +62,4 @@ export const SingleUser = ({ nombreCurso, idCursoPrerrequisito
   );
 };
 
-export default SingleUser;
+export default SingleUserD;

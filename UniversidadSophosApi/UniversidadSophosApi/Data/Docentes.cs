@@ -33,6 +33,9 @@ namespace UniversidadSophosApi.Data
         public DateTime FechaNacimiento { get; set; }
         [Column("estado")]
         public int Estado { get; set; }
+        [Column("nombre_nivel_academico")]
+        [StringLength(50)]
+        public string NombreNivelAcademico { get; set; }
 
         [ForeignKey(nameof(IdDocumento))]
         [InverseProperty(nameof(Documento.Docentes))]
