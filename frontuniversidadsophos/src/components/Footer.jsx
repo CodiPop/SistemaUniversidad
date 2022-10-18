@@ -33,7 +33,7 @@ const Footer = () => {
               <strong>Servicios</strong>
             </Typography>
             <Link href="#" color="inherit">
-              <Typography>Lavado de autos</Typography>
+              <Typography>Desarrollo de soluciones</Typography>
             </Link>
           </Grid>
 
@@ -42,7 +42,7 @@ const Footer = () => {
               <strong>Contactanos</strong>
             </Typography>
             <Link href="#" color="inherit">
-              <Typography>4302841</Typography>
+              <Typography>Sguerreroa@uninorte.edu.co</Typography>
             </Link>
           </Grid>
         </Grid>
