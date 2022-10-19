@@ -29,10 +29,6 @@ const Header = () => {
             Inicio
           </Link>
          
-        <Link component={RLink} to="/Edit" color="inherit">
-            Editar
-          </Link> 
-       
           <Link component={RLink} to="/Lista" color="inherit">
             Añadir
           </Link>

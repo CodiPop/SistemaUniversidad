@@ -34,11 +34,17 @@ export const SingleUser = ({ nombreCurso, idCursoPrerrequisito
   , numCreditos, cupos, idCurso,idCursoPrerrequisitoNavigation}) => {
 
   const classes = useStyle();
-/*   const intialState = {
-    name:"abc",
-    pais: "",
-    correo: "",
-  }; */
+  const handleClick = async() =>{
+    try {
+
+      await axios.delete("https://localhost:44351/api/cursos/"+idCurso)
+      window.location.reload(false);
+      
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <Card className={classes.cardUser}>
     <CardContent className={classes.carContent}>
@@ -60,6 +66,7 @@ export const SingleUser = ({ nombreCurso, idCursoPrerrequisito
         {cupos}
       </Typography>
       <Button component={RLink} to="/Edit" state={{id: idCurso}}>Editar</Button>
+      <Button color="error" onClick={handleClick}>Eliminar</Button>
     </CardContent>
 
   </Card>

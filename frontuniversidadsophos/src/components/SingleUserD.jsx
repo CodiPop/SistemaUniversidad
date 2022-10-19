@@ -33,7 +33,17 @@ const useStyle = makeStyles({
 export const SingleUserD = ({ nombreDocente,numDocumento, fechaNacimiento, nombreNivelAcademico,idDocente}) => {
 
   const classes = useStyle();
+  const handleClick = async() =>{
+    try {
 
+      await axios.delete("https://localhost:44351/api/docentes/"+idDocente)
+      window.location.reload(false);
+      
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <Card className={classes.cardUser}>
     <CardContent className={classes.carContent}>
@@ -54,6 +64,7 @@ export const SingleUserD = ({ nombreDocente,numDocumento, fechaNacimiento, nombr
         {fechaNacimiento}
       </Typography>
       <Button component={RLink} to="/EditD" state={{id: idDocente}}>Editar</Button>
+      <Button color="error" onClick={handleClick}>Eliminar</Button>
     </CardContent>
 
   </Card>

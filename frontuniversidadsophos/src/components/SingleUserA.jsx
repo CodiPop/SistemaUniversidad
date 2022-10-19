@@ -1,4 +1,5 @@
 import React from "react";
+import {useNavigate} from "react-router-dom"
 import {
   Box,
   Button,
@@ -32,9 +33,19 @@ const useStyle = makeStyles({
 
 export const SingleUserA = ({ nombreAlumno, facultad
   , numDocumento, fechaNacimiento, idAlumno}) => {
-
+  const navigate = useNavigate()
   const classes = useStyle();
+  const handleClick = async() =>{
+    try {
 
+      await axios.delete("https://localhost:44351/api/alumnos/"+idAlumno)
+      window.location.reload(false);
+      
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <Card className={classes.cardUser}>
     <CardContent className={classes.carContent}>
@@ -55,6 +66,7 @@ export const SingleUserA = ({ nombreAlumno, facultad
         {fechaNacimiento}
       </Typography>
       <Button component={RLink} to="/EditA" state={{id: idAlumno}}>Editar</Button>
+      <Button color="error" onClick={handleClick}>Eliminar</Button>
     </CardContent>
 
   </Card>
