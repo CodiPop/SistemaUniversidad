@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import { makeStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
+import { Link as RLink} from "react-router-dom";
 import axios from "axios";
 import { Container } from "@mui/system";
 const useStyle = makeStyles({
@@ -30,8 +30,7 @@ const useStyle = makeStyles({
   }
 });
 
-export const SingleUserD = ({ nombreDocente, facultad
-  , numDocumento, fechaNacimiento, nombreNivelAcademico,idCursoPrerrequisitoNavigation}) => {
+export const SingleUserD = ({ nombreDocente,numDocumento, fechaNacimiento, nombreNivelAcademico,idDocente}) => {
 
   const classes = useStyle();
 
@@ -54,6 +53,7 @@ export const SingleUserD = ({ nombreDocente, facultad
         <strong>Fecha de Nacimiento: </strong>
         {fechaNacimiento}
       </Typography>
+      <Button component={RLink} to="/EditD" state={{id: idDocente}}>Editar</Button>
     </CardContent>
 
   </Card>

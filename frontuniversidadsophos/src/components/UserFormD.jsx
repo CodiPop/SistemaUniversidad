@@ -4,14 +4,14 @@ import React from "react";
 import {useNavigate} from "react-router-dom"
 import "./Styles/UserForm.css";
 
-const UserForm = (props) => {
-const { nombreCurso, numCreditos, cupos,idCurso, idCursoPrerrequisito } = props.user;
+const UserFormD = (props) => {
+const { nombreDocente, numDocumento, idDocente,fechaNacimiento, nombreNivelAcademico } = props.user;
 const navigate = useNavigate()
   const handleSubmit = async(e) => {
     e.preventDefault()
     console.log(props.user)
     try {
-      await axios.post("https://localhost:44351/api/cursos",props.user)
+      await axios.post("https://localhost:44351/api/docentes",props.user)
       navigate("/")
 
     } catch (error) {
@@ -23,7 +23,7 @@ const navigate = useNavigate()
   const handleEdit = async() =>{
     try {
 
-      await axios.put("https://localhost:44351/api/cursos/"+idCurso,props.user)
+      await axios.put("https://localhost:44351/api/docentes/"+idDocente,props.user)
       navigate("/")
 
     } catch (error) {
@@ -37,44 +37,44 @@ const navigate = useNavigate()
           <InputLabel>Nombre:</InputLabel>
           <Input
             type="text"
-            name="nombreCurso"
+            name="nombreDocente"
             onChange={props.onChange}
-            value={nombreCurso}
+            value={nombreDocente}
           ></Input>
           
         </FormControl>
         <br></br>
         <br></br>
         <FormControl fullWidth>
-          <InputLabel>Prerrequisito:</InputLabel>
+          <InputLabel>Facultad:</InputLabel>
           <Input
             type="text"
-            name="idCursoPrerrequisito"
+            name="nombreNivelAcademico"
             onChange={props.onChange}
-            value={idCursoPrerrequisito}
+            value={nombreNivelAcademico}
           ></Input>
         </FormControl>
         <br></br>
         <br></br>
 
         <FormControl fullWidth>
-          <InputLabel>Numero de Creditos:</InputLabel>
+          <InputLabel>Numero de Documento:</InputLabel>
           <Input
             type="text"
-            name="numCreditos"
+            name="numDocumento"
             onChange={props.onChange}
-            value={numCreditos}
+            value={numDocumento}
           ></Input>
         </FormControl>
         <br></br>
         <br></br>
         <FormControl fullWidth>
-          <InputLabel>Cupos:</InputLabel>
+          <InputLabel>Fecha de Nacimiento:</InputLabel>
           <Input
             type="text"
-            name="cupos"
+            name="fechaNacimiento"
             onChange={props.onChange}
-            value={cupos}
+            value={fechaNacimiento}
           ></Input>
         </FormControl>
         <Box align="center">
@@ -86,4 +86,4 @@ const navigate = useNavigate()
   );
 };
 
-export default UserForm;
+export default UserFormD;

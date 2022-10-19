@@ -1,9 +1,9 @@
 import SingleUser from "../components/SingleUser";
 import Title from "../components/Title";
-import UserForm from "../components/UserForm";
+import UserFormA from "../components/UserFormA";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import EditTag from "../components/EditTag";
+import EditTagA from "../components/EditTagA";
 import { useLocation } from 'react-router-dom'
 const EditA = () => {
 
@@ -12,10 +12,10 @@ const EditA = () => {
   console.log(proof)
   const id = proof.id;
   const intialState = {
-    nombreCurso: "",
-    numCreditos: "",
-    cupos:"",
-    idCursoPrerrequisito: "",
+    nombreAlumno: "",
+    facultad: "",
+    numDocumento:"",
+    fechaNacimiento: ""
 
 
   };
@@ -25,7 +25,7 @@ const EditA = () => {
 
   const getData = async () => {
     try {
-      const response = await axios.get("https://localhost:44351/api/cursos/"+id );
+      const response = await axios.get("https://localhost:44351/api/alumnos/"+id );
       const { data } = response;
       setUser(data);
       console.log(response);
@@ -44,10 +44,10 @@ const EditA = () => {
 
   return (
     <div>
-      <Title text="Edita el registro" />
-      <EditTag user={user} />
+      <Title text="Edita el Alumno" />
+      <EditTagA user={user} />
       <br></br>
-      <UserForm onChange={handleChange} user={user} isEdit />
+      <UserFormA onChange={handleChange} user={user} isEdit />
     </div>
   );
 };

@@ -30,10 +30,10 @@ namespace UniversidadSophosApi.Controllers
 
         //Busqueda por Id de alumno
         // GET: api/Alumnos/BuscarAlumno
-        [HttpGet("BuscarAlumno")]
-        public async Task<ActionResult<Alumnos>> GetAlumnos([FromBody] Alumnos alumnos)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Alumnos>> GetAlumnos(int id)
         {
-            var alumnoss = await _context.Alumnos.FindAsync(alumnos.IdAlumno);
+            var alumnoss = await _context.Alumnos.FindAsync(id);
 
             if (alumnoss == null)
             {

@@ -7,8 +7,8 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import { Link as RLink} from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import { Container } from "@mui/system";
 const useStyle = makeStyles({
@@ -34,7 +34,11 @@ export const SingleUser = ({ nombreCurso, idCursoPrerrequisito
   , numCreditos, cupos, idCurso,idCursoPrerrequisitoNavigation}) => {
 
   const classes = useStyle();
-
+/*   const intialState = {
+    name:"abc",
+    pais: "",
+    correo: "",
+  }; */
   return (
     <Card className={classes.cardUser}>
     <CardContent className={classes.carContent}>
@@ -42,6 +46,7 @@ export const SingleUser = ({ nombreCurso, idCursoPrerrequisito
         <strong>Nombre: </strong>
         {nombreCurso}
       </Typography>
+      
       <Typography variant="body1">
         <strong>Prerrequisito: </strong>
         {idCursoPrerrequisitoNavigation?.nombreCurso}
@@ -54,6 +59,7 @@ export const SingleUser = ({ nombreCurso, idCursoPrerrequisito
         <strong>Cupos: </strong>
         {cupos}
       </Typography>
+      <Button component={RLink} to="/Edit" state={{id: idCurso}}>Editar</Button>
     </CardContent>
 
   </Card>

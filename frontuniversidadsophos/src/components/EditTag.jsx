@@ -7,10 +7,8 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
-import { Link as RLink} from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import axios from "axios";
-import { Container } from "@mui/system";
+
 const useStyle = makeStyles({
   cardUser: {
 
@@ -30,31 +28,34 @@ const useStyle = makeStyles({
   }
 });
 
-export const SingleUserA = ({ nombreAlumno, facultad
-  , numDocumento, fechaNacimiento, idAlumno}) => {
-
+export const EditTag = ( props) => {
+  console.log(props.user)
   const classes = useStyle();
-
+  const intialState = {
+    name:"abc",
+    pais: "",
+    correo: "",
+  };
   return (
     <Card className={classes.cardUser}>
     <CardContent className={classes.carContent}>
       <Typography variant="body1">
         <strong>Nombre: </strong>
-        {nombreAlumno}
+        {props.user.nombreCurso}
       </Typography>
       <Typography variant="body1">
-        <strong>Facultad: </strong>
-        {facultad}
+        <strong>Prerrequisito: </strong>
+        {props.user.idCursoPrerrequisito}
       </Typography>
       <Typography variant="body1">
-        <strong>Numero de documento: </strong>
-        {numDocumento}
+        <strong>Numero de creditos: </strong>
+        {props.user.numCreditos}
       </Typography>
       <Typography variant="body1">
-        <strong>Fecha de Nacimiento: </strong>
-        {fechaNacimiento}
+        <strong>Cupos: </strong>
+        {props.user.cupos}
       </Typography>
-      <Button component={RLink} to="/EditA" state={{id: idAlumno}}>Editar</Button>
+      
     </CardContent>
 
   </Card>
@@ -63,4 +64,4 @@ export const SingleUserA = ({ nombreAlumno, facultad
   );
 };
 
-export default SingleUserA;
+export default EditTag;

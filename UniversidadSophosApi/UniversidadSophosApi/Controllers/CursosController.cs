@@ -29,10 +29,10 @@ namespace UniversidadSophosApi.Controllers
         }
 
         // GET: api/Cursos/5
-        [HttpGet("BuscarCurso")]
-        public async Task<ActionResult<Cursos>> GetCursos([FromBody] Cursos cursos)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Cursos>> GetCursos(int id)
         {
-            var cursoss = await _context.Cursos.FindAsync(cursos.IdCurso);
+            var cursoss = await _context.Cursos.FindAsync(id);
 
             if (cursoss == null)
             {
