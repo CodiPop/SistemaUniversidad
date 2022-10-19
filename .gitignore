@@ -82,7 +82,6 @@ $RECYCLE.BIN/
 !.vscode/extensions.json
 
 *.v2
-*.v2
 UniversidadSophosApi/.vs/UniversidadSophosApi/v16/.suo
 UniversidadSophosApi/UniversidadSophosApi/obj/Debug/netcoreapp3.1/UniversidadSophosApi.csproj.AssemblyReference.cache
 UniversidadSophosApi/UniversidadSophosApi/UniversidadSophosApi.csproj
