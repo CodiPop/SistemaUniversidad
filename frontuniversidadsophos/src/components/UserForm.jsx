@@ -53,6 +53,7 @@ const navigate = useNavigate()
             onChange={props.onChange}
             value={idCursoPrerrequisito}
           ></Input>
+          <FormHelperText>Id del curso prerrequisito</FormHelperText>
         </FormControl>
         <br></br>
         <br></br>

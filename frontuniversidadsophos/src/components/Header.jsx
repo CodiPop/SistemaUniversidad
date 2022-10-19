@@ -13,13 +13,17 @@ const useStyle = makeStyles({
   menu: {
     display: "flex",
     justifyContent: "space-evenly",
+    
   },
+  topbar:{
+    backgroundColor: "black"
+  }
 });
 const Header = () => {
   const classes = useStyle();
   return (
-    <AppBar position="sticky">
-      <Container maxWidth="lg">
+    <AppBar  position="sticky" >
+      <Container maxWidth="lg" >
         <Toolbar className={classes.menu}>
           <IconButton edge="start">
             <img src="logo512.png" alt="Logo" height="30px" />

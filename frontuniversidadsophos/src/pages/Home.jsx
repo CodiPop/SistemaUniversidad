@@ -1,16 +1,11 @@
-import { Box, Typography } from '@mui/material'
+import { Box} from '@mui/material'
 import { Container} from '@mui/system'
 import React from 'react'
 import Title from '../components/Title'
 import { makeStyles } from '@material-ui/core/styles'
 import List from '../components/List'
-import SingleUser from '../components/SingleUser'
 
-const data = {
-    name: "Santiago",
-    pais: "Colombia",
-    correo: "sguerreroa@uninorte.edu.co"
-  }
+
 
   const useStyles = makeStyles({
     container:{

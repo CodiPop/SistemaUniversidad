@@ -1,17 +1,13 @@
 import React from "react";
-import {useNavigate} from "react-router-dom"
 import {
-  Box,
   Button,
   Card,
   CardContent,
-  CardMedia,
   Typography,
 } from "@mui/material";
 import { Link as RLink} from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
-import { Container } from "@mui/system";
 const useStyle = makeStyles({
   cardUser: {
 
@@ -33,7 +29,7 @@ const useStyle = makeStyles({
 
 export const SingleUserA = ({ nombreAlumno, facultad
   , numDocumento, fechaNacimiento, idAlumno}) => {
-  const navigate = useNavigate()
+  //const navigate = useNavigate()
   const classes = useStyle();
   const handleClick = async() =>{
     try {
