@@ -38,7 +38,7 @@ const List = () => {
 
         useEffect (() => {
             getData()
-        })
+        },[])
 
   return (
       <div >
