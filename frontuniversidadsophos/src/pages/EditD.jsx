@@ -1,21 +1,21 @@
 import SingleUser from "../components/SingleUser";
 import Title from "../components/Title";
-import UserForm from "../components/UserForm";
+import UserFormD from "../components/UserFormD";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import EditTag from "../components/EditTag";
+import EditTagD from "../components/EditTagD";
 import { useLocation } from 'react-router-dom'
-const EditA = () => {
+const EditD = () => {
 
   const location = useLocation();
   const proof = location.state
   console.log(proof)
   const id = proof.id;
   const intialState = {
-    nombreCurso: "",
-    numCreditos: "",
-    cupos:"",
-    idCursoPrerrequisito: "",
+    nombreDocente: "",
+    nombreNivelAcademico: "",
+    numDocumento:"",
+    fechaNacimiento: ""
 
 
   };
@@ -25,7 +25,7 @@ const EditA = () => {
 
   const getData = async () => {
     try {
-      const response = await axios.get("https://localhost:44351/api/cursos/"+id );
+      const response = await axios.get("https://localhost:44351/api/docentes/"+id );
       const { data } = response;
       setUser(data);
       console.log(response);
@@ -44,12 +44,12 @@ const EditA = () => {
 
   return (
     <div>
-      <Title text="Edita el registro" />
-      <EditTag user={user} />
+      <Title text="Edita al Docente" />
+      <EditTagD user={user} />
       <br></br>
-      <UserForm onChange={handleChange} user={user} isEdit />
+      <UserFormD onChange={handleChange} user={user} isEdit />
     </div>
   );
 };
 
-export default EditA;
+export default EditD;

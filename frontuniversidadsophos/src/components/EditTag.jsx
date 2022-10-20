@@ -1,13 +1,14 @@
 import React from "react";
 import {
+  Box,
   Button,
   Card,
   CardContent,
+  CardMedia,
   Typography,
 } from "@mui/material";
-import { Link as RLink} from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import axios from "axios";
+
 const useStyle = makeStyles({
   cardUser: {
 
@@ -27,43 +28,34 @@ const useStyle = makeStyles({
   }
 });
 
-export const SingleUser = ({ nombreCurso, idCursoPrerrequisito
-  , numCreditos, cupos, idCurso,idCursoPrerrequisitoNavigation}) => {
-
+export const EditTag = ( props) => {
+  console.log(props.user)
   const classes = useStyle();
-  const handleClick = async() =>{
-    try {
-
-      await axios.delete("https://localhost:44351/api/cursos/"+idCurso)
-      window.location.reload(false);
-      
-
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  const intialState = {
+    name:"abc",
+    pais: "",
+    correo: "",
+  };
   return (
     <Card className={classes.cardUser}>
     <CardContent className={classes.carContent}>
       <Typography variant="body1">
         <strong>Nombre: </strong>
-        {nombreCurso}
+        {props.user.nombreCurso}
       </Typography>
-      
       <Typography variant="body1">
         <strong>Prerrequisito: </strong>
-        {idCursoPrerrequisitoNavigation?.nombreCurso}
+        {props.user.idCursoPrerrequisito}
       </Typography>
       <Typography variant="body1">
         <strong>Numero de creditos: </strong>
-        {numCreditos}
+        {props.user.numCreditos}
       </Typography>
       <Typography variant="body1">
         <strong>Cupos: </strong>
-        {cupos}
+        {props.user.cupos}
       </Typography>
-      <Button component={RLink} to="/Edit" state={{id: idCurso}}>Editar</Button>
-      <Button color="error" onClick={handleClick}>Eliminar</Button>
+      
     </CardContent>
 
   </Card>
@@ -72,4 +64,4 @@ export const SingleUser = ({ nombreCurso, idCursoPrerrequisito
   );
 };
 
-export default SingleUser;
+export default EditTag;

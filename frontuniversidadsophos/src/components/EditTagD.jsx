@@ -1,13 +1,14 @@
 import React from "react";
 import {
+  Box,
   Button,
   Card,
   CardContent,
+  CardMedia,
   Typography,
 } from "@mui/material";
 import { makeStyles } from "@material-ui/core/styles";
-import { Link as RLink} from "react-router-dom";
-import axios from "axios";
+
 const useStyle = makeStyles({
   cardUser: {
 
@@ -27,41 +28,34 @@ const useStyle = makeStyles({
   }
 });
 
-export const SingleUserD = ({ nombreDocente,numDocumento, fechaNacimiento, nombreNivelAcademico,idDocente}) => {
-
+export const EditTagD = ( props) => {
+  console.log(props.user)
   const classes = useStyle();
-  const handleClick = async() =>{
-    try {
-
-      await axios.delete("https://localhost:44351/api/docentes/"+idDocente)
-      window.location.reload(false);
-      
-
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  const intialState = {
+    name:"abc",
+    pais: "",
+    correo: "",
+  };
   return (
     <Card className={classes.cardUser}>
     <CardContent className={classes.carContent}>
       <Typography variant="body1">
         <strong>Nombre: </strong>
-        {nombreDocente}
+        {props.user.nombreDocente}
       </Typography>
       <Typography variant="body1">
-        <strong>Nivel Academico: </strong>
-        {nombreNivelAcademico}
+        <strong>Titulo Acedemico: </strong>
+        {props.user.nombreNivelAcademico}
       </Typography>
       <Typography variant="body1">
         <strong>Numero de documento: </strong>
-        {numDocumento}
+        {props.user.numDocumento}
       </Typography>
       <Typography variant="body1">
         <strong>Fecha de Nacimiento: </strong>
-        {fechaNacimiento}
+        {props.user.fechaNacimiento}
       </Typography>
-      <Button component={RLink} to="/EditD" state={{id: idDocente}}>Editar</Button>
-      <Button color="error" onClick={handleClick}>Eliminar</Button>
+      
     </CardContent>
 
   </Card>
@@ -70,4 +64,4 @@ export const SingleUserD = ({ nombreDocente,numDocumento, fechaNacimiento, nombr
   );
 };
 
-export default SingleUserD;
+export default EditTagD;

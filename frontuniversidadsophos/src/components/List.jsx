@@ -14,6 +14,7 @@ const List = () => {
         
 
         try {
+            
             const responseC = await axios.get("https://localhost:44351/api/cursos")
             const responseA = await axios.get("https://localhost:44351/api/alumnos")
             const responseD = await axios.get("https://localhost:44351/api/docentes")
@@ -37,14 +38,14 @@ const List = () => {
 
         useEffect (() => {
             getData()
-        },[])
+        })
 
   return (
       <div >
         <div className='center'><h3>Cursos</h3></div>
         <Box>
         {cursos.map((item,index) => (
-        <SingleUser key={index} {...item} isEdit/>
+        <SingleUser key={index} {...item} isEdit />
         ))}
         </Box>
             
@@ -59,7 +60,7 @@ const List = () => {
 
         {docentes.map((item,index) => (
             
-        <SingleUserD key={index} {...item} isEdit/>
+        <SingleUserD key={index} {...item} cadenaA isEdit/>
         ))}
         </Box>   
       </div>

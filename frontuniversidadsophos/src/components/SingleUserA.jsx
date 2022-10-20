@@ -1,16 +1,13 @@
 import React from "react";
 import {
-  Box,
   Button,
   Card,
   CardContent,
-  CardMedia,
   Typography,
 } from "@mui/material";
+import { Link as RLink} from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
 import axios from "axios";
-import { Container } from "@mui/system";
 const useStyle = makeStyles({
   cardUser: {
 
@@ -31,10 +28,20 @@ const useStyle = makeStyles({
 });
 
 export const SingleUserA = ({ nombreAlumno, facultad
-  , numDocumento, fechaNacimiento, idCurso,idCursoPrerrequisitoNavigation}) => {
-
+  , numDocumento, fechaNacimiento, idAlumno}) => {
+  //const navigate = useNavigate()
   const classes = useStyle();
+  const handleClick = async() =>{
+    try {
 
+      await axios.delete("https://localhost:44351/api/alumnos/"+idAlumno)
+      window.location.reload(false);
+      
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <Card className={classes.cardUser}>
     <CardContent className={classes.carContent}>
@@ -54,6 +61,8 @@ export const SingleUserA = ({ nombreAlumno, facultad
         <strong>Fecha de Nacimiento: </strong>
         {fechaNacimiento}
       </Typography>
+      <Button component={RLink} to="/EditA" state={{id: idAlumno}}>Editar</Button>
+      <Button color="error" onClick={handleClick}>Eliminar</Button>
     </CardContent>
 
   </Card>

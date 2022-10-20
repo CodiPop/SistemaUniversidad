@@ -29,10 +29,10 @@ namespace UniversidadSophosApi.Controllers
         }
 
         // GET: api/Docentes/
-        [HttpGet("BuscarDocente")]
-        public async Task<ActionResult<Docentes>> GetDocentes([FromBody] Docentes docentes)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Docentes>> GetDocentes(int id)
         {
-            var docentess = await _context.Docentes.FindAsync(docentes.IdDocente);
+            var docentess = await _context.Docentes.FindAsync(id);
             //var docentess = await _context.Docentes.Where(x => x.NombreDocente.Contains(docentes.NombreDocente)).FirstOrDefaultAsync();
 
             if (docentess == null)
