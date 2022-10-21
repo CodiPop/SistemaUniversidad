@@ -11,7 +11,7 @@ import axios from "axios";
 const useStyle = makeStyles({
   cardUser: {
 
-    width: "50%",
+    width: "80%",
     margin: "8px auto",
 
   },

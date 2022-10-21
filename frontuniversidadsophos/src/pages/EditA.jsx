@@ -1,4 +1,3 @@
-import SingleUser from "../components/SingleUser";
 import Title from "../components/Title";
 import UserFormA from "../components/UserFormA";
 import React, { useState, useEffect } from "react";

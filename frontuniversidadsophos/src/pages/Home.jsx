@@ -1,5 +1,4 @@
 import { Box} from '@mui/material'
-import { Container} from '@mui/system'
 import React from 'react'
 import Title from '../components/Title'
 import { makeStyles } from '@material-ui/core/styles'
@@ -26,10 +25,10 @@ const Home = () => {
     
     <Box className={classes.container}>
 
-    <Container maxWidth="md" className={classes.container}>
+
     <Title text="Sistema de datos de la Universidad Sophos"/>
     <List/>
-    </Container>
+    
 
     </Box>
 

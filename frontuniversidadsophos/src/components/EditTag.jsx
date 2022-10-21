@@ -1,10 +1,7 @@
 import React from "react";
 import {
-  Box,
-  Button,
   Card,
   CardContent,
-  CardMedia,
   Typography,
 } from "@mui/material";
 import { makeStyles } from "@material-ui/core/styles";
@@ -31,11 +28,6 @@ const useStyle = makeStyles({
 export const EditTag = ( props) => {
   console.log(props.user)
   const classes = useStyle();
-  const intialState = {
-    name:"abc",
-    pais: "",
-    correo: "",
-  };
   return (
     <Card className={classes.cardUser}>
     <CardContent className={classes.carContent}>

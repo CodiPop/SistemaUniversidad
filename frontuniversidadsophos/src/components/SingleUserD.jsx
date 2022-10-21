@@ -11,7 +11,7 @@ import axios from "axios";
 const useStyle = makeStyles({
   cardUser: {
 
-    width: "50%",
+    width: "80%",
     margin: "8px auto",
 
   },
@@ -27,7 +27,7 @@ const useStyle = makeStyles({
   }
 });
 
-export const SingleUserD = ({ nombreDocente,numDocumento, fechaNacimiento, nombreNivelAcademico,idDocente}) => {
+export const SingleUserD = ({ nombreDocente, numDocumento, fechaNacimiento, nombreNivelAcademico,idDocente}) => {
 
   const classes = useStyle();
   const handleClick = async() =>{

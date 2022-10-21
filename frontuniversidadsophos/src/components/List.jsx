@@ -3,7 +3,7 @@ import axios from 'axios'
 import SingleUser from './SingleUser';
 import SingleUserA from './SingleUserA';
 import SingleUserD from './SingleUserD';
-import { Box } from '@mui/material';
+import { Box,Grid } from '@mui/material';
 import "./Styles/List.css"
 const List = () => {
     const [cursos,setCursos] = useState([]);
@@ -11,6 +11,7 @@ const List = () => {
     const [docentes,setDocentes] = useState([]);
     const [niveles,setNiveles] = useState([]);
     const getData = async () => {
+
         
 
         try {
@@ -41,20 +42,29 @@ const List = () => {
         },[])
 
   return (
+
+        
       <div >
+
+<Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={3}>
+        <Grid item xs={4}>
         <div className='center'><h3>Cursos</h3></div>
         <Box>
         {cursos.map((item,index) => (
         <SingleUser key={index} {...item} isEdit />
         ))}
         </Box>
-            
+        </Grid>
+        <Grid item xs={4}>
         <div className='center'><h3>Alumnos</h3></div>
         <Box>
         {alumnos.map((item,index) => (
         <SingleUserA key={index} {...item} isEdit/>
         ))}
         </Box>
+        </Grid>
+        <Grid item xs={4}>
         <div className='center'><h3>Profesores</h3></div>
         <Box>
 
@@ -62,7 +72,14 @@ const List = () => {
             
         <SingleUserD key={index} {...item} cadenaA isEdit/>
         ))}
-        </Box>   
+        </Box> 
+        </Grid>
+      </Grid>
+    </Box>
+        
+            
+        
+  
       </div>
   );
 };
