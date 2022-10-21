@@ -35,7 +35,7 @@ const EditA = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  },[]);
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });

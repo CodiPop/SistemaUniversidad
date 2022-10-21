@@ -61,7 +61,7 @@ const navigate = useNavigate()
           <InputLabel>Numero de Documento:</InputLabel>
           <Input
             type="text"
-            name="numdocumento"
+            name="numDocumento"
             onChange={props.onChange}
             value={numDocumento}
           ></Input>
