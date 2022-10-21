@@ -9,3 +9,8 @@ html body #root{
     background-color: #dcd3ea;
     height: 100%;
 }
+
+.container{
+    display: flex;
+    justify-content: space-between;
+}

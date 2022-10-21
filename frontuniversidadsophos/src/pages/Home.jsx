@@ -28,8 +28,6 @@ const Home = () => {
 
     <Title text="Sistema de datos de la Universidad Sophos"/>
     <List/>
-    
-
     </Box>
 
     </React.Fragment>

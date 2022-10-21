@@ -3,8 +3,9 @@ import axios from 'axios'
 import SingleUser from './SingleUser';
 import SingleUserA from './SingleUserA';
 import SingleUserD from './SingleUserD';
-import { Box,Grid } from '@mui/material';
+import { Box,Button,Grid } from '@mui/material';
 import "./Styles/List.css"
+import{Link as RLink} from "react-router-dom";
 const List = () => {
     const [cursos,setCursos] = useState([]);
     const [alumnos,setAlumnos] = useState([]);
@@ -49,8 +50,12 @@ const List = () => {
 <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={3}>
         <Grid item xs={4}>
+
         <div className='center'><h3>Cursos</h3></div>
-        <Box>
+        <Box >
+        <Box textAlign='center'>
+        <Button component={RLink} to="/Create" variant='contained' className='center' state={{ es : "curso"}}>Crear</Button>
+        </Box>
         {cursos.map((item,index) => (
         <SingleUser key={index} {...item} isEdit />
         ))}
@@ -59,6 +64,9 @@ const List = () => {
         <Grid item xs={4}>
         <div className='center'><h3>Alumnos</h3></div>
         <Box>
+        <Box textAlign='center'>
+        <Button component={RLink} to="/Create" variant='contained' className='center' state={{ es : "alumno"}}>Crear</Button>
+        </Box>
         {alumnos.map((item,index) => (
         <SingleUserA key={index} {...item} isEdit/>
         ))}
@@ -67,6 +75,9 @@ const List = () => {
         <Grid item xs={4}>
         <div className='center'><h3>Profesores</h3></div>
         <Box>
+        <Box textAlign='center'>
+        <Button component={RLink} to="/Create" variant='contained' className='center' state={{ es : "docente"}}>Crear</Button>
+        </Box>
 
         {docentes.map((item,index) => (
             

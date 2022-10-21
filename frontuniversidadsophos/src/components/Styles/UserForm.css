@@ -4,10 +4,12 @@
 }
 
 .form{
+    
+    justify-content:space-around;
     margin: 8px auto;
     max-width: 70%;
     padding: 12px;
-    border-radius: 5px;
+    border-radius: 15px;
     border: solid #323232;
     background-color: aliceblue;
     padding: 8px;
