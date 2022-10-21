@@ -14,6 +14,24 @@ const intialState = {
 
 
   };
+  const intialStateA = {
+    nombreAlumno: "",
+    numDocumento: "",
+    fechaNacimiento:"",
+    facultad:"",
+    idDocumento:"7"
+
+
+  };
+  const intialStateD = {
+    nombreDocente: "",
+    numDocumento: "",
+    fechaNacimiento:"",
+    nombreNivelAcademico: "",
+    idDocumento:"7"
+
+
+  };
   
 
 const useStyle = makeStyles({
@@ -26,7 +44,9 @@ const useStyle = makeStyles({
 export const Form = ({parametro}) => {
     const navigate = useNavigate()
     const [user, setUser] = useState(intialState);
-const handleSubmit = async(e) => {
+    const [userA, setUserA] = useState(intialStateA);
+    const [userD, setUserD] = useState(intialStateD);
+    const handleSubmit = async(e) => {
     e.preventDefault()
     console.log(user)
     try {
@@ -39,16 +59,43 @@ const handleSubmit = async(e) => {
     
   }
 
-  
-    
+  const handleSubmitA = async(e) => {
+    e.preventDefault()
+    console.log(userA)
+    try {
+      await axios.post("https://localhost:44351/api/alumnos/Insertar",userA)
+      navigate("/")
+
+    } catch (error) {
+      console.log(error)
+    }
 
     
+    
+  }
+  const handleSubmitD = async(e) => {
+    e.preventDefault()
+    console.log(userD)
+    try {
+      await axios.post("https://localhost:44351/api/docentes/Insertar",userD)
+      navigate("/")
 
-      const handleChange = (e) => {
+    } catch (error) {
+      console.log(error)
+    }
+
+    
+    
+  }
+
+    const handleChange = (e) => {
           setUser({ ...user, [e.target.name]: e.target.value });
         };
-    const handleClick = (e) => {
-            setUser({ ...user, [e.target.name]: e.target.value });
+    const handleChangeA = (e) => {
+          setUserA({ ...userA, [e.target.name]: e.target.value });
+         };
+    const handleChangeD = (e) => {
+          setUserD({ ...userD, [e.target.name]: e.target.value });
          };
     const classes = useStyle();
     console.log({parametro})
@@ -56,7 +103,7 @@ const handleSubmit = async(e) => {
   return (
     <div>
 
-<form className="form" >
+      <form className="form" >
 {/* **************************     CURSOS          ***************************************** */}
         
           {parametro.es === "curso" ?<FormControl fullWidth>
@@ -122,6 +169,7 @@ const handleSubmit = async(e) => {
           <Input
             type="text"
             name="nombreAlumno"
+            onChange={handleChangeA}
           ></Input>
           <br></br>
         </FormControl>:<></>}
@@ -131,6 +179,7 @@ const handleSubmit = async(e) => {
           <Input
             type="text"
             name="facultad"
+            onChange={handleChangeA}
           ></Input>
           <br></br>
         </FormControl>:<></>}
@@ -140,6 +189,7 @@ const handleSubmit = async(e) => {
           <Input
             type="text"
             name="numDocumento"
+            onChange={handleChangeA}
           ></Input>
             <br></br>
         </FormControl>:<></>}
@@ -149,8 +199,10 @@ const handleSubmit = async(e) => {
           <Input
             type="text"
             name="fechaNacimiento"
+            onChange={handleChangeA}
           ></Input>
           <br></br>
+          <Button onClick={handleSubmitA}>Crear</Button>
         </FormControl>:<></>}
 
 
@@ -161,7 +213,8 @@ const handleSubmit = async(e) => {
           <InputLabel>Nombre del Docente:</InputLabel>
           <Input
             type="text"
-            name="mombreDocente"
+            name="nombreDocente"
+            onChange={handleChangeD}
           ></Input>
           <br></br>
         </FormControl>:false}
@@ -170,7 +223,8 @@ const handleSubmit = async(e) => {
           <InputLabel>Nivel Academico:</InputLabel>
           <Input
             type="text"
-            name="nivelAcademico"
+            name="nombreNivelAcademico"
+            onChange={handleChangeD}
           ></Input>
           <br></br>
         </FormControl>:false}
@@ -180,6 +234,7 @@ const handleSubmit = async(e) => {
           <Input
             type="text"
             name="numDocumento"
+            onChange={handleChangeD}
           ></Input>
           <br></br>
         </FormControl>:""}
@@ -190,8 +245,10 @@ const handleSubmit = async(e) => {
           <Input
             type="text"
             name="fechaNacimiento"
+            onChange={handleChangeD}
           ></Input>
           <br></br>
+          <Button onClick={handleSubmitD}>Crear</Button>
         </FormControl>:false}
         
         
