@@ -46,6 +46,7 @@ const Search = () => {
   const classes = useStyles();
   const [cursos,setCursos] = useState([]);
   const [alumnos,setAlumnos] = useState([]);
+  const [alumnosF,setAlumnosF] = useState([]);
   const [docentes,setDocentes] = useState([]);
 
   const getData = async () => {
@@ -56,12 +57,15 @@ const Search = () => {
         
         const responseC = await axios.get("https://localhost:44351/api/cursos/Buscar/"+nombre)
         const responseA = await axios.get("https://localhost:44351/api/alumnos/Buscar/"+nombre)
+        const responseAF = await axios.get("https://localhost:44351/api/alumnos/BuscarF/"+nombre)
         const responseD = await axios.get("https://localhost:44351/api/docentes/Buscar/"+nombre)
         console.log(responseC.data);
         console.log(responseA.data);
-         console.log(responseD.data);
+        console.log(responseAF.data);
+        console.log(responseD.data);
         setCursos(responseC.data);
         setAlumnos(responseA.data);
+        setAlumnosF(responseAF.data);
         setDocentes(responseD.data);
        
     } catch (error) {
@@ -72,6 +76,7 @@ const Search = () => {
 
   return (
     <div>
+      <br></br>
       <div className={classes.container}>
       <TextField fullWidth 
       id="outlined-search" 
@@ -83,21 +88,6 @@ const Search = () => {
       }}}
       />
       <FormHelperText>Presione Enter</FormHelperText>
-{/*       <Box>
-      {cursos.map((item,index) => (
-        <SingleUser key={index} {...item} isEdit />
-        ))}
-      </Box>
-      <Box>
-      {alumnos.map((item,index) => (
-        <SingleUserA key={index} {...item} isEdit/>
-        ))}
-      </Box>
-      <Box>
-      {docentes.map((item,index) => (
-        <SingleUserD key={index} {...item} isEdit/>
-        ))}
-      </Box> */}
 
 
 
@@ -146,6 +136,19 @@ const Search = () => {
         {docentes.map((item,index) => (
             
         <SingleUserD key={index} {...item} cadenaA isEdit/>
+        ))}
+        </Box> 
+        </Grid>
+        <Grid item xs={4}>
+        <div className='center'><h3>Facultad</h3></div>
+        <Box>
+        <Box textAlign='center'>
+        
+        </Box>
+
+        {alumnosF.map((item,index) => (
+            
+        <SingleUserA key={index} {...item} cadenaA isEdit/>
         ))}
         </Box> 
         </Grid>

@@ -74,6 +74,22 @@ namespace UniversidadSophosApi.Controllers
 
             return alumnoss;
         }
+
+
+        [HttpGet("BuscarF/{nombre}")]
+        public async Task<ActionResult<IEnumerable<Alumnos>>> GetAlumnosFNombre(string nombre)
+        {
+            var alumnoss = await _context.Alumnos.Where(p => p.Facultad.Contains(nombre)).ToListAsync();
+
+            //var cursoss = await _context.Cursos.Where(x => x.NombreCurso.Contains(cursos.NombreCurso)).FirstOrDefaultAsync();
+            //var cursosss = await _context.Cursos.Where(x => x.NombreCurso.Contains(cursos.NombreCurso)).ToListAsync();
+            if (alumnoss == null)
+            {
+                return NotFound();
+            }
+
+            return alumnoss;
+        }
         // PUT: api/Alumnos/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
