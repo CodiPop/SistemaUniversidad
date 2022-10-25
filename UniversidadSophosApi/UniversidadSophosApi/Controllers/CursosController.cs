@@ -43,17 +43,34 @@ namespace UniversidadSophosApi.Controllers
         }
 
         [HttpGet("BuscarCursoN")]
-        public async Task<ActionResult<Cursos>> GetDocentesN([FromBody] Cursos cursos)
+        public async Task<ActionResult<IEnumerable<Cursos>>> GetDocentesN([FromBody] Cursos cursos)
         {
-            //var docentess = await _context.Docentes.FindAsync(docentes.IdDocente);
-            var cursoss = await _context.Cursos.Where(x => x.NombreCurso.Contains(cursos.NombreCurso)).FirstOrDefaultAsync();
 
-            if (cursoss == null)
+
+            //var cursoss = await _context.Cursos.Where(x => x.NombreCurso.Contains(cursos.NombreCurso)).FirstOrDefaultAsync();
+            var cursosss = await _context.Cursos.Where(x => x.NombreCurso.Contains(cursos.NombreCurso)).ToListAsync();
+
+            if (cursosss == null)
             {
                 return NotFound();
             }
 
-            return cursoss;
+            return cursosss;
+        }
+
+        [HttpGet("Buscar/{nombre}")]
+        public async Task<ActionResult<IEnumerable<Cursos>>> GetDocentesNombre(string nombre)
+        {
+            var cursosss = await _context.Cursos.Where(p => p.NombreCurso.Contains(nombre)).ToListAsync();
+
+            //var cursoss = await _context.Cursos.Where(x => x.NombreCurso.Contains(cursos.NombreCurso)).FirstOrDefaultAsync();
+            //var cursosss = await _context.Cursos.Where(x => x.NombreCurso.Contains(cursos.NombreCurso)).ToListAsync();
+            if (cursosss == null)
+            {
+                return NotFound();
+            }
+
+            return cursosss;
         }
 
 

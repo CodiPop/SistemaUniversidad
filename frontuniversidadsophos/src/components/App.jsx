@@ -6,6 +6,7 @@ import EditA from '../pages/EditA';
 import EditD from '../pages/EditD';
 import {BrowserRouter as Router, Route,Routes} from "react-router-dom"
 import Create from '../pages/Create';
+import Search from '../pages/Search';
 
 const App = () => {
 
@@ -21,6 +22,7 @@ const App = () => {
             <Route exact path='/EditA/' element={<EditA/>}/>
             <Route exact path='/EditD/' element={<EditD/>}/>
             <Route exact path='/Create/' element={<Create/>}/>
+            <Route exact path='/Search/' element={<Search/>}/>
 
             
           </Routes> 

@@ -47,10 +47,10 @@ namespace UniversidadSophosApi.Controllers
         //Busqueda por Nombre de alumno
         // GET: api/Alumnos/BuscarAlumnoN
         [HttpGet("BuscarAlumnoN")]
-        public async Task<ActionResult<Alumnos>> GetAlumnosN([FromBody] Alumnos alumnos)
+        public async Task<ActionResult<IEnumerable<Alumnos>>> GetAlumnosN([FromBody] Alumnos alumnos)
         {
             //var alumnoss = await _context.Alumnos.FindAsync(alumnos.NombreAlumno);
-            var alumnoss = await _context.Alumnos.Where(x => x.NombreAlumno.Contains(alumnos.NombreAlumno)).FirstOrDefaultAsync();
+            var alumnoss = await _context.Alumnos.Where(x => x.NombreAlumno.Contains(alumnos.NombreAlumno)).ToListAsync();
 
             if (alumnoss == null)
             {
@@ -60,6 +60,20 @@ namespace UniversidadSophosApi.Controllers
             return alumnoss;
         }
 
+        [HttpGet("Buscar/{nombre}")]
+        public async Task<ActionResult<IEnumerable<Alumnos>>> GetAlumnosNombre(string nombre)
+        {
+            var alumnoss = await _context.Alumnos.Where(p => p.NombreAlumno.Contains(nombre)).ToListAsync();
+
+            //var cursoss = await _context.Cursos.Where(x => x.NombreCurso.Contains(cursos.NombreCurso)).FirstOrDefaultAsync();
+            //var cursosss = await _context.Cursos.Where(x => x.NombreCurso.Contains(cursos.NombreCurso)).ToListAsync();
+            if (alumnoss == null)
+            {
+                return NotFound();
+            }
+
+            return alumnoss;
+        }
         // PUT: api/Alumnos/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.

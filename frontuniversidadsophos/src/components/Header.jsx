@@ -33,8 +33,8 @@ const Header = () => {
             Inicio
           </Link>
          
-          <Link component={RLink} to="/Lista" color="inherit">
-            Añadir
+          <Link component={RLink} to="/Search" color="inherit">
+            Buscar
           </Link>
         </Toolbar>
       </Container>

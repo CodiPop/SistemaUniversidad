@@ -57,6 +57,21 @@ namespace UniversidadSophosApi.Controllers
             return docentes;
         }
 
+        [HttpGet("Buscar/{nombre}")]
+        public async Task<ActionResult<IEnumerable<Docentes>>> GetDocenteNombre(string nombre)
+        {
+            var doncentess = await _context.Docentes.Where(p => p.NombreDocente.Contains(nombre)).ToListAsync();
+
+            //var cursoss = await _context.Cursos.Where(x => x.NombreCurso.Contains(cursos.NombreCurso)).FirstOrDefaultAsync();
+            //var cursosss = await _context.Cursos.Where(x => x.NombreCurso.Contains(cursos.NombreCurso)).ToListAsync();
+            if (doncentess == null)
+            {
+                return NotFound();
+            }
+
+            return doncentess;
+        }
+
         // PUT: api/Docentes/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
