@@ -42,6 +42,41 @@ namespace UniversidadSophosApi.Controllers
             return cursoss;
         }
 
+
+                
+        [HttpGet("InfoCursos/{idCurso}")]
+
+        public async Task<ActionResult> GetInfoCurso(int idCurso)
+        {
+            // curso -> cursodocente,incripcionescurso
+            var curso = _context.Cursos;
+            
+            // Contar
+            var inscripcionescurso = _context.InscripcionesCurso;
+
+            //cursodocente -> docente
+            var cursosdocentes = _context.CursosDocentes;
+
+            // NombreDocente
+            var docentes = _context.Docentes;
+
+            var alumnos = _context.Alumnos;
+
+            var query = (from acumulado in (from doc in 
+            (from ins in inscripcionescurso group ins by ins.IdCursoDocente into grp select new {IdCursoDocente=grp.Key, Cursando=grp.Count() }).Where(x=>x.IdCursoDocente==idCurso)
+            join cursdoc in cursosdocentes on doc.IdCursoDocente equals cursdoc.IdCursoDocente select new {doc.IdCursoDocente,doc.Cursando,cursdoc.IdDocente})
+            join profe in docentes on acumulado.IdDocente equals profe.IdDocente select new {acumulado.IdCursoDocente,acumulado.Cursando,profe.NombreDocente});
+
+            var query2 = from lista in (from x in (from cur in cursosdocentes join que in query on cur.IdCursoDocente equals que.IdCursoDocente select new { cur.IdCursoDocente })
+                         join inc in inscripcionescurso on x.IdCursoDocente equals inc.IdCursoDocente
+                         select new { x.IdCursoDocente, inc.IdAlumno })
+                         join alum in alumnos on lista.IdAlumno equals alum.IdAlumno select new { lista.IdCursoDocente,alum.NombreAlumno};
+            var final = new { query, query2 };
+            //var final = await(from quer in query join querty in query2 on quer.IdCursoDocente equals querty.IdCursoDocente select new { quer.IdCursoDocente, quer.NombreDocente, quer.Cursando, lista=new[] {querty} }).ToListAsync();
+            return Ok(final);
+        }
+
+
         [HttpGet("BuscarCursoN")]
         public async Task<ActionResult<IEnumerable<Cursos>>> GetDocentesN([FromBody] Cursos cursos)
         {

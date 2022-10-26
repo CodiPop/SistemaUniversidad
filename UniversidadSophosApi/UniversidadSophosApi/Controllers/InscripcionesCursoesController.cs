@@ -87,8 +87,24 @@ namespace UniversidadSophosApi.Controllers
         }
 
         // DELETE: api/InscripcionesCursoes/5
-        [HttpDelete("{id}")]
+        [HttpDelete("delete/{id}")]
         public async Task<ActionResult<InscripcionesCurso>> DeleteInscripcionesCurso(int id)
+        {
+            //var inscripcionesCurso = await _context.InscripcionesCurso.FindAsync(id);
+            var inscripcionesCurso = await _context.InscripcionesCurso.Where(x => x.IdAlumno.Equals(id)).FirstAsync();
+            if (inscripcionesCurso == null)
+            {
+                return NotFound();
+            }
+
+            _context.InscripcionesCurso.Remove(inscripcionesCurso);
+            await _context.SaveChangesAsync();
+
+            return inscripcionesCurso;
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<InscripcionesCurso>> DeleteInscripcionesCursoA(int id)
         {
             var inscripcionesCurso = await _context.InscripcionesCurso.FindAsync(id);
             if (inscripcionesCurso == null)
@@ -101,7 +117,6 @@ namespace UniversidadSophosApi.Controllers
 
             return inscripcionesCurso;
         }
-
         private bool InscripcionesCursoExists(int id)
         {
             return _context.InscripcionesCurso.Any(e => e.IdInscripcion == id);

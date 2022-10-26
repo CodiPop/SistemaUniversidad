@@ -19,11 +19,6 @@ namespace UniversidadSophosApi.Data
         public int IdCursoDocente { get; set; }
         [Column("id_alumno")]
         public int IdAlumno { get; set; }
-        [Column("fecha_inicio", TypeName = "date")]
-        public DateTime FechaInicio { get; set; }
-        [Column("fecha_fin", TypeName = "date")]
-        public DateTime FechaFin { get; set; }
-
         [ForeignKey(nameof(IdAlumno))]
         [InverseProperty(nameof(Alumnos.InscripcionesCurso))]
         public virtual Alumnos IdAlumnoNavigation { get; set; }

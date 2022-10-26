@@ -35,6 +35,7 @@ namespace UniversidadSophosApi.Data
         [Column("estado")]
         public int Estado { get; set; }
 
+
         [ForeignKey(nameof(IdCursoPrerrequisito))]
         [InverseProperty(nameof(Cursos.InverseIdCursoPrerrequisitoNavigation))]
         public virtual Cursos IdCursoPrerrequisitoNavigation { get; set; }

@@ -29,11 +29,10 @@ const useStyle = makeStyles({
 
 export const SingleUserA = ({ nombreAlumno, facultad
   , numDocumento, fechaNacimiento, idAlumno}) => {
-  //const navigate = useNavigate()
   const classes = useStyle();
   const handleClick = async() =>{
     try {
-
+      await axios.delete("https://localhost:44351/api/InscripcionesCursoes/delete/"+idAlumno)
       await axios.delete("https://localhost:44351/api/alumnos/"+idAlumno)
       window.location.reload(false);
       
