@@ -45,6 +45,7 @@ const Search = () => {
   };
   const classes = useStyles();
   const [cursos,setCursos] = useState([]);
+  const [cursosCA,setCursosCA] = useState([]);
   const [alumnos,setAlumnos] = useState([]);
   const [alumnosF,setAlumnosF] = useState([]);
   const [docentes,setDocentes] = useState([]);
@@ -56,14 +57,17 @@ const Search = () => {
     try {
         
         const responseC = await axios.get("https://localhost:44351/api/cursos/Buscar/"+nombre)
+        const responseCA = await axios.get("https://localhost:44351/api/cursos/Buscarestado/"+nombre)
         const responseA = await axios.get("https://localhost:44351/api/alumnos/Buscar/"+nombre)
         const responseAF = await axios.get("https://localhost:44351/api/alumnos/BuscarF/"+nombre)
         const responseD = await axios.get("https://localhost:44351/api/docentes/Buscar/"+nombre)
         console.log(responseC.data);
+        console.log(responseCA.data);
         console.log(responseA.data);
         console.log(responseAF.data);
         console.log(responseD.data);
         setCursos(responseC.data);
+        setCursosCA(responseCA.data);
         setAlumnos(responseA.data);
         setAlumnosF(responseAF.data);
         setDocentes(responseD.data);
@@ -111,6 +115,9 @@ const Search = () => {
         
         </Box>
         {cursos.map((item,index) => (
+        <SingleUser key={index} {...item} isEdit />
+        ))}
+        {cursosCA.map((item,index) => (
         <SingleUser key={index} {...item} isEdit />
         ))}
         </Box>

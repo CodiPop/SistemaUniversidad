@@ -33,7 +33,7 @@ namespace UniversidadSophosApi.Data
         [Column("cupos")]
         public int Cupos { get; set; }
         [Column("estado")]
-        public int Estado { get; set; }
+        public string Estado { get; set; }
 
 
         [ForeignKey(nameof(IdCursoPrerrequisito))]

@@ -108,6 +108,21 @@ namespace UniversidadSophosApi.Controllers
             return cursosss;
         }
 
+        [HttpGet("BuscarEstado/{estado}")]
+        public async Task<ActionResult<IEnumerable<Cursos>>> GetCursosEstado(string  estado)
+        {
+            var cursosss = await _context.Cursos.Where(p => p.Estado.Equals(estado)).ToListAsync();
+
+            //var cursoss = await _context.Cursos.Where(x => x.NombreCurso.Contains(cursos.NombreCurso)).FirstOrDefaultAsync();
+            //var cursosss = await _context.Cursos.Where(x => x.NombreCurso.Contains(cursos.NombreCurso)).ToListAsync();
+            if (cursosss == null)
+            {
+                return NotFound();
+            }
+
+            return cursosss;
+        }
+
 
         // PUT: api/Cursos/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
