@@ -31,7 +31,7 @@ const List = () => {
             setAlumnos(responseA.data);
             setDocentes(responseD.data);
             setNiveles(responseN.data);
-            console.log(niveles);
+            
             
         } catch (error) {
             console.log(error);

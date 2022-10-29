@@ -62,18 +62,34 @@ namespace UniversidadSophosApi.Controllers
 
             var alumnos = _context.Alumnos;
 
-            var query = (from acumulado in (from doc in 
-            (from ins in inscripcionescurso group ins by ins.IdCursoDocente into grp select new {IdCursoDocente=grp.Key, Cursando=grp.Count() }).Where(x=>x.IdCursoDocente==idCurso)
-            join cursdoc in cursosdocentes on doc.IdCursoDocente equals cursdoc.IdCursoDocente select new {doc.IdCursoDocente,doc.Cursando,cursdoc.IdDocente})
-            join profe in docentes on acumulado.IdDocente equals profe.IdDocente select new {acumulado.IdCursoDocente,acumulado.Cursando,profe.NombreDocente});
+            var acumulado =await (from acum in (from enlazar in ((from c in curso join cd in cursosdocentes on c.IdCurso equals cd.IdCurso select new {c.IdCurso,cd.IdCursoDocente }).Where(x =>x.IdCurso==idCurso))
+                            join ins in inscripcionescurso on enlazar.IdCursoDocente equals ins.IdCursoDocente select new { enlazar.IdCursoDocente })
+                            group acum by acum.IdCursoDocente into grp select new {IdCursoDocente=grp.Key,Inscritos=grp.Count()}).FirstAsync()
+                            ;
 
-            var query2 = from lista in (from x in (from cur in cursosdocentes join que in query on cur.IdCursoDocente equals que.IdCursoDocente select new { cur.IdCursoDocente })
-                         join inc in inscripcionescurso on x.IdCursoDocente equals inc.IdCursoDocente
-                         select new { x.IdCursoDocente, inc.IdAlumno })
-                         join alum in alumnos on lista.IdAlumno equals alum.IdAlumno select new { lista.IdCursoDocente,alum.NombreAlumno};
-            var final = new { query, query2 };
+
+            var nombreProfesor = await (from doc in docentes join cur in cursosdocentes on doc.IdDocente equals cur.IdDocente select new
+                                {doc.IdDocente,cur.IdCursoDocente,doc.NombreDocente}).Where(x=>x.IdCursoDocente==acumulado.IdCursoDocente).ToListAsync() 
+                                 ;
+
+
+            //>
+
+            //var query = (from acumulado in (from doc in 
+            //(from ins in inscripcionescurso group ins by ins.IdCursoDocente into grp select new {IdCursoDocente=grp.Key, Cursando=grp.Count() }).Where(x=>x.IdCursoDocente==idCurso)
+            //join cursdoc in cursosdocentes on doc.IdCursoDocente equals cursdoc.IdCursoDocente select new {doc.IdCursoDocente,doc.Cursando,cursdoc.IdDocente})
+            //join profe in docentes on acumulado.IdDocente equals profe.IdDocente select new {acumulado.IdCursoDocente,acumulado.Cursando,profe.NombreDocente});
+
+            //var query2 = from lista in (from x in (from cur in cursosdocentes join que in query on cur.IdCursoDocente equals que.IdCursoDocente select new { cur.IdCursoDocente })
+            //             join inc in inscripcionescurso on x.IdCursoDocente equals inc.IdCursoDocente
+            //             select new { x.IdCursoDocente, inc.IdAlumno })
+            //             join alum in alumnos on lista.IdAlumno equals alum.IdAlumno select new { lista.IdCursoDocente,alum.NombreAlumno};
+            //var final = new { query, query2 };
+            var final = new { nombreProfesor , acumulado};
+
             //var final = await(from quer in query join querty in query2 on quer.IdCursoDocente equals querty.IdCursoDocente select new { quer.IdCursoDocente, quer.NombreDocente, quer.Cursando, lista=new[] {querty} }).ToListAsync();
             return Ok(final);
+
         }
 
 

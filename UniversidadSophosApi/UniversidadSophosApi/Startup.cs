@@ -54,7 +54,7 @@ namespace UniversidadSophosApi
             }
 
             app.UseHttpsRedirection();
-
+            
             app.UseRouting();
             app.UseCors(MyAllowSpecificOrigins);
             app.UseAuthorization();

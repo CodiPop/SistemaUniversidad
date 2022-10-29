@@ -1,4 +1,5 @@
 import React,{useState, useEffect}from "react";
+import { useGetMore } from "../hooks/useGetMore";
 import {
   Button,
   Card,
@@ -30,32 +31,52 @@ export const SingleUser = ({
   idCurso,
   idCursoPrerrequisitoNavigation,
 }) => {
-  const [cursosInfo,setCursosInfo] = useState([]);
+  
   
   const classes = useStyle();
-  const handleClick = async () => {
+const handleClick = async () => {
+    var response
+    try {
+      response = await axios.get("https://localhost:44351/api/cursosdocentes/BuscarIDcs/" + idCurso);
+      
+      await axios.delete("https://localhost:44351/api/InscripcionesCursoes/deleteCD/"+response.data.idCursoDocente)
+      console.log("borre la inscripcion") 
+    } catch (error) {
+      
+    }
+    try {
+      
+      await axios.delete("https://localhost:44351/api/cursosdocentes/delete/" + idCurso);
+      
+    } catch (error) {
+      
+    }
+
+
     try {
       await axios.delete("https://localhost:44351/api/cursos/" + idCurso);
       window.location.reload(false);
     } catch (error) {
-      console.log(error);
+      
     }
   };
-  const getData = async () => {
-    try {
-      const response = await axios.get("https://localhost:44351/api/cursos/InfoCursos/" + idCurso);
-      console.log(idCurso)
-      console.log(response.data.query);
-      setCursosInfo(response.data.query);
+
+    
+    const {data,addData} = useGetMore();
       
-    } catch (error) {
-      console.log(error);
-    }
-  }
+      const getData = async () => {
+      const response = await axios.get("https://localhost:44351/api/cursos/InfoCursos/" + idCurso);
+      const {data}= response;
+      addData(data)
   
-  useEffect (() => {
-    getData()
-},[])
+
+    }
+    
+    useEffect (() => {
+      getData()
+  },[])
+
+  
   return (
     <Card className={classes.cardUser}>
       <CardContent className={classes.carContent}>
@@ -82,7 +103,7 @@ export const SingleUser = ({
         <Button color="error" onClick={handleClick}>
           Eliminar
         </Button>
-        {/* <Modal info={cursosInfo} ></Modal> */}
+       <Modal info={data}></Modal>
       </CardContent>
     </Card>
   );

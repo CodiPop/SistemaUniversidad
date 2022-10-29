@@ -31,11 +31,28 @@ export const SingleUserD = ({ nombreDocente, numDocumento, fechaNacimiento, nomb
 
   const classes = useStyle();
   const handleClick = async() =>{
+  var response
+  try {
+    response = await axios.get("https://localhost:44351/api/cursosdocentes/BuscarIDcsD/"+idDocente)
+    console.log(response.data.idCursoDocente);
+    await axios.delete("https://localhost:44351/api/InscripcionesCursoes/deleteCD/"+response.data.idCursoDocente)
+    console.log("borre la inscripcion")
+  } catch (error) {
+    
+  }
+    try {
+
+
+      await axios.delete("https://localhost:44351/api/cursosdocentes/"+response.data.idCursoDocente)
+       
+    } catch (error) {
+      console.log(error)
+    }
     try {
 
       await axios.delete("https://localhost:44351/api/docentes/"+idDocente)
       window.location.reload(false);
-      
+       
 
     } catch (error) {
       console.log(error)

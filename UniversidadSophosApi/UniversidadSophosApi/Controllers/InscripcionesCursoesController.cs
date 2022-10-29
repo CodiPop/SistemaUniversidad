@@ -88,16 +88,32 @@ namespace UniversidadSophosApi.Controllers
 
         // DELETE: api/InscripcionesCursoes/5
         [HttpDelete("delete/{id}")]
-        public async Task<ActionResult<InscripcionesCurso>> DeleteInscripcionesCurso(int id)
+        public async Task<ActionResult<IEnumerable<InscripcionesCurso>>> DeleteInscripcionesCurso(int id)
         {
             //var inscripcionesCurso = await _context.InscripcionesCurso.FindAsync(id);
-            var inscripcionesCurso = await _context.InscripcionesCurso.Where(x => x.IdAlumno.Equals(id)).FirstAsync();
+            var inscripcionesCurso = await _context.InscripcionesCurso.Where(x => x.IdAlumno.Equals(id)).ToListAsync();
             if (inscripcionesCurso == null)
             {
                 return NotFound();
             }
 
-            _context.InscripcionesCurso.Remove(inscripcionesCurso);
+            _context.InscripcionesCurso.RemoveRange(inscripcionesCurso);
+            await _context.SaveChangesAsync();
+
+            return inscripcionesCurso;
+        }
+
+        [HttpDelete("deleteCD/{id}")]
+        public async Task<ActionResult<IEnumerable<InscripcionesCurso>>> DeleteInscripcionesCursoCD(int id)
+        {
+            
+            var inscripcionesCurso = await _context.InscripcionesCurso.Where(x => x.IdCursoDocente.Equals(id)).ToListAsync();
+            if (inscripcionesCurso == null)
+            {
+                return NotFound();
+            }
+
+            _context.InscripcionesCurso.RemoveRange(inscripcionesCurso);
             await _context.SaveChangesAsync();
 
             return inscripcionesCurso;

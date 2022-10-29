@@ -42,6 +42,32 @@ namespace UniversidadSophosApi.Controllers
             return cursosDocentes;
         }
 
+        [HttpGet("BuscarIDcs/{id}")]
+        public async Task<ActionResult<CursosDocentes>> GetIdCS(int id)
+        {
+            var cursosDocentes = await _context.CursosDocentes.Where(p => p.IdCurso.Equals(id)).FirstAsync();
+
+            
+            if (cursosDocentes == null)
+            {
+                return NotFound();
+            }
+
+            return cursosDocentes;
+        }
+        [HttpGet("BuscarIDcsD/{id}")]
+        public async Task<ActionResult<CursosDocentes>> GetIdCSD(int id)
+        {
+            var cursosDocentes = await _context.CursosDocentes.Where(p => p.IdDocente.Equals(id)).FirstAsync();
+
+
+            if (cursosDocentes == null)
+            {
+                return NotFound();
+            }
+
+            return cursosDocentes;
+        }
         // PUT: api/CursosDocentes/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
@@ -102,6 +128,22 @@ namespace UniversidadSophosApi.Controllers
             return cursosDocentes;
         }
 
+
+        [HttpDelete("delete/{id}")]
+        public async Task<ActionResult<IEnumerable<CursosDocentes>>> DeleteCursosDocentesBatch(int id)
+        {
+            // var cursosDocentes = await _context.CursosDocentes.FindAsync(id);
+            var cursosDocentes = await _context.CursosDocentes.Where(x => x.IdCurso.Equals(id)).ToListAsync();
+            if (cursosDocentes == null)
+            {
+                return NotFound();
+            }
+
+            _context.CursosDocentes.RemoveRange(cursosDocentes);
+            await _context.SaveChangesAsync();
+
+            return cursosDocentes;
+        }
         private bool CursosDocentesExists(int id)
         {
             return _context.CursosDocentes.Any(e => e.IdCursoDocente == id);
