@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UniversidadSophosApi.DBContext;
+using Microsoft.OpenApi.Models;
 
 namespace UniversidadSophosApi
 {
@@ -43,6 +44,10 @@ namespace UniversidadSophosApi
             services.AddControllers();
             services.AddDbContext<AppDBContext>(option =>
                     option.UseSqlServer(Configuration.GetConnectionString("CadenaConexion")));
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "UniversidadSophosApi", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,10 +56,10 @@ namespace UniversidadSophosApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApplication1 v1"));
             }
-
             app.UseHttpsRedirection();
-            
             app.UseRouting();
             app.UseCors(MyAllowSpecificOrigins);
             app.UseAuthorization();

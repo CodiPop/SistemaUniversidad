@@ -82,7 +82,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombreAlumno\": \"Santiago Guerrero Martinez\"\r\n}",
+							"raw": "{\r\n    \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -90,7 +90,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:44351/api/alumnos/buscaralumnoN",
+							"raw": "https://localhost:44351/api/alumnos/buscar/santiago",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -99,7 +99,8 @@
 							"path": [
 								"api",
 								"alumnos",
-								"buscaralumnoN"
+								"buscar",
+								"santiago"
 							]
 						}
 					},
@@ -305,7 +306,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\r\n        \"idDocumento\": 7,\r\n        \"numDocumento\": 789456124,\r\n        \"nombreDocente\": \"Marcos Maestre\",\r\n        \"fechaNacimiento\": \"1999-10-21T00:00:00\",\r\n        \"estado\": 1\r\n}",
+							"raw": "{\r\n\r\n        \"idDocumento\": 7,\r\n        \"numDocumento\": 789456124,\r\n        \"nombreDocente\": \"Lokisito\",\r\n        \"fechaNacimiento\": \"1999-10-21T00:00:00\",\r\n        \"nombreNivelAcademico\": \"Licensiado \",\r\n        \"estado\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -466,7 +467,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\r\n        \r\n        \"idFacultad\": 1,\r\n        \"nombreCurso\": \" orientada a objetos\",\r\n        \"idCursoPrerrequisito\": 2 ,\r\n        \"cupos\": 30,\r\n        \"estado\":1\r\n}",
+							"raw": "{\r\n        \r\n        \"idFacultad\": 5,\r\n        \"nombreCurso\": \" el curso peye\",\r\n        \"idCursoPrerrequisito\": 5,\r\n        \"cupos\": 105,\r\n        \"estado\":1\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -660,7 +661,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -668,7 +669,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:44351/api/cursosdocentes/2",
+							"raw": "https://localhost:44351/api/cursosdocentes/BuscarIDcsD/2018",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -677,7 +678,8 @@
 							"path": [
 								"api",
 								"cursosdocentes",
-								"2"
+								"BuscarIDcsD",
+								"2018"
 							]
 						}
 					},
