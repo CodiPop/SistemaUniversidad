@@ -10,7 +10,7 @@ const List = () => {
     const [cursos,setCursos] = useState([]);
     const [alumnos,setAlumnos] = useState([]);
     const [docentes,setDocentes] = useState([]);
-    const [niveles,setNiveles] = useState([]);
+    
     const getData = async () => {
 
         
@@ -20,17 +20,16 @@ const List = () => {
             const responseC = await axios.get("https://localhost:44351/api/cursos")
             const responseA = await axios.get("https://localhost:44351/api/alumnos")
             const responseD = await axios.get("https://localhost:44351/api/docentes")
-            const responseN = await axios.get("https://localhost:44351/api/NivelAcademicoes")
-            //console.log(responseC.data);
-            //const { results } = responseC.data;
+            
+
             console.log(responseC.data);
             console.log(responseA.data);
             console.log(responseD.data);
-            console.log(responseN.data);
+            
             setCursos(responseC.data);
             setAlumnos(responseA.data);
             setDocentes(responseD.data);
-            setNiveles(responseN.data);
+            
             
             
         } catch (error) {

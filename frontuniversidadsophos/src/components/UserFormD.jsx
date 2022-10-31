@@ -10,6 +10,7 @@ const navigate = useNavigate()
   const handleSubmit = async(e) => {
     e.preventDefault()
     console.log(props.user)
+    
     try {
       await axios.post("https://localhost:44351/api/docentes",props.user)
       navigate("/")

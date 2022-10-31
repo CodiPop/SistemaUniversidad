@@ -1,11 +1,11 @@
-import React,{useState, useEffect}from "react";
+import React,{ useEffect}from "react";
 import { useGetMore } from "../hooks/useGetMore";
 import {
   Button,
   Card,
   CardContent,
   Typography,
-  Box,
+  
 } from "@mui/material";
 import { Link as RLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
