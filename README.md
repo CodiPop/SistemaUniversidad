@@ -1,8 +1,30 @@
 # SistemaUniversidad
 Fullstack project
 
+This project was designed to fulfill the following requirements:
+ 
+* List all of the courses, showing its name, prerrequisite course name, number of credits and avalible slots.
+             
+* List all of the enrolled students ,showing their names, faculty and other info.
+          
+* List all of the teachers, showing their names, max degree title and other info.
+          
+* Add new courses, students and teachers. 
+          
+* Update the info of courses, students and teachers. 
+           
+* Delete courses, students and teachers. 
+          
+* Search courses, students and teachers by name.
+      
+* Search courses if they have avalible slots or not.
+          
+* Search students by their faculty.
+          
 
-There is a Postmant file with the structure of every controller with its respective calls inside the UniversidadSophosApi folder
+
+There is a Postmant file with the structure of every controller with its respective calls inside the UniversidadSophosApi folder or you can check the request 
+structures in the swagger url that opens by default.
 
 To initialize the project do the following
 
@@ -12,6 +34,7 @@ To initialize the project do the following
 
 2. Populate it with the script supplied in the root folder of the project.
 
+![Modelo (1)](https://user-images.githubusercontent.com/47578270/199043965-bd1d830a-bb4b-4dac-9321-7857d0181976.png)
 
 
 
