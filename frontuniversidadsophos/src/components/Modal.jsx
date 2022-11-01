@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import {
   Button,
   Card,
@@ -21,31 +21,27 @@ const style = {
 };
 
 const Modal = (props) => {
-  
-  /* const getData = async () => {
-        try {
-          const response = await axios.get("https://localhost:44351/api/cursos/InfoCursos/" + idCurso);
-          console.log(response.data.query[0].nombreDocente);
-          setCursosInfo(response);
-          
-        } catch (error) {
-          console.log(error);
-        }
-      }; */
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
-
-    console.log(props.info)
-    //console.log(props.info.query[0].nombreDocente)
-    //var xd = props.info
-    //console.log(" xd = ",xd.query[0])
-    //getData();
   };
-  const handleClose = () => setOpen(false);
+
+
+  const handleClose = () => {
+
+    
+    setOpen(false);
+  }
+  
+useEffect (() => {
+
+  
+},[open])
   return (
     <div>
       <Button onClick={handleOpen}>Mas informacion</Button>
+      
       <Modals
         open={open}
         onClose={handleClose}
@@ -53,15 +49,22 @@ const Modal = (props) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-          Docente de la asignatura:
-          </Typography>
-          {/* <Typography component="h2">{props.info.nombreProfesor[0].nombreDocente}</Typography> */}
-          <Typography id="modal-modal-title" variant="h6" component="h2">Cantidad de estudiantes matericulados:</Typography>
-          {/* <Typography component="h2">{props.info.acumulado.inscritos}</Typography> */}
-            
+
+          {props.isC?<Typography id="modal-modal-title" variant="h6" component="h2">Docente de la asignatura:</Typography>:<Typography id="modal-modal-title" variant="h6" component="h2">Cursos Matriculados:</Typography>}
+          {props.isC?<Typography component="h2">{props.info[0]?.nombreDocente}</Typography>:<Typography component="h2">
+            {/* { Array(props.info.cursos).length>0 && Array(props.info.cursos).map((x)=>{
+            <Typography>
+              {x?.nombreCurso}
+              {console.log(props.info,'nombre curso es')}
+            </Typography>
+
+          })    } */}{/* {Array(props.info2).map((x,i)=><p key={i}>{x?.nombreCurso}</p>)} */}{console.log(props.info2)}</Typography>}
+          {props.isC?<Typography id="modal-modal-title" variant="h6" component="h2">Cantidad de estudiantes matriculados:</Typography>:<Typography id="modal-modal-title" variant="h6" component="h2">Numero Total de Creditos Matriculados:</Typography>}
+          {props.isC?<Typography component="h2">{props.info.inscritos}</Typography>:<Typography component="h2">{props.info}</Typography>}
+          
+          
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              
+          
           </Typography>
         </Box>
       </Modals>

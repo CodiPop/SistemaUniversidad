@@ -59,6 +59,29 @@ namespace UniversidadSophosApi.Controllers
 
             return alumnoss;
         }
+       
+        [HttpGet("CursoInfo/{id}")]
+
+        public async Task<ActionResult> getCursoInfo(int id)
+        {
+            var cursoDocente = _context.CursosDocentes;
+            var inscripcionesCursos = _context.InscripcionesCurso;
+            var cursos = _context.Cursos;
+
+            var queryCursos = from curs in (from eic in (from ic in inscripcionesCursos where ic.IdAlumno == id select new { ic.IdCursoDocente })
+                                            join cd in cursoDocente on eic.IdCursoDocente equals cd.IdCursoDocente select new { cd.IdCurso })
+                              join ccu in cursos on curs.IdCurso equals ccu.IdCurso select new {ccu.NombreCurso,ccu.NumCreditos} 
+                                                ;
+
+            var solucionU = await queryCursos.SumAsync(x=>x.NumCreditos) ;
+
+            var solucionD = await (from x in queryCursos select new { x.NombreCurso }).ToListAsync();
+
+            //var data = {}
+
+            return Ok(new {acumulado=solucionU,cursos=solucionD});
+            
+        }
 
         [HttpGet("Buscar/{nombre}")]
         public async Task<ActionResult<IEnumerable<Alumnos>>> GetAlumnosNombre(string nombre)

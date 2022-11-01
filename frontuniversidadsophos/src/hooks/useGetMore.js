@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 export const useGetMore = () =>{
-    const [data, setData] = useState([])
+    const [data, setData] = useState({})
 
     const addData = (data) => {
         const dataa = data;
