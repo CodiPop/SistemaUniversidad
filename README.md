@@ -20,6 +20,10 @@ This project was designed to fulfill the following requirements:
 * Search courses if they have avalible slots or not.
           
 * Search students by their faculty.
+
+* Select a course and show more information.
+
+* Select a student and show more information
           
 
 
