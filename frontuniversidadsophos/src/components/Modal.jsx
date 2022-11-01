@@ -1,8 +1,6 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useEffect } from "react";
 import {
   Button,
-  Card,
-  CardContent,
   Typography,
   Box,
   Modal as Modals,
